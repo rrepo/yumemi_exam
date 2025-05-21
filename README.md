@@ -1,75 +1,79 @@
-# Nuxt Minimal Starter
+# 📊 都道府県別人口推移グラフ表示アプリ ゆめみコーディング試験
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+このアプリは、都道府県を選択して人口推移をグラフで可視化できる Web アプリケーションです。Vue 3（Composition API + `<script setup>`）と Chart.js を用いて構築されています。
 
-## Setup
+🔗 **公開アプリ**:  
+[https://yumemi-exam-dyxzab250-rrepos-projects.vercel.app/](https://yumemi-exam-dyxzab250-rrepos-projects.vercel.app/)
+---
+![アプリ画像](/app.png "サンプル")
 
-Make sure to install dependencies:
+## 🔧 主な機能
 
-```bash
-# npm
-npm install
+- 直感的に、都道府県を複数選択して人口推移を折れ線グラフで表示  
+- 「詳細モード」ON で年少・生産年齢・老年人口も表示  
+- 選択に応じて自動でデータを取得し、グラフ更新  
+- Chart.js による滑らかな描画  
+- スマホ・PC対応のレスポンシブレイアウト
 
-# pnpm
-pnpm install
+---
 
-# yarn
-yarn install
+## 🧪 技術スタック
 
-# bun
-bun install
-```
+- **Vue 3**
+  - Composition API
+  - `<script setup>` 構文
+- **TypeScript**
+- **Chart.js**
+  - 折れ線グラフ描画に使用
+- **Vercel**
+  - 自動ビルド & デプロイ対応
 
-## Development Server
+---
 
-Start the development server on `http://localhost:3000`:
+## 🗂 ファイル・機能概要
 
-```bash
-# npm
-npm run dev
+### `template`
 
-# pnpm
-pnpm dev
+- 都道府県選択（`<SelectMap />`）
+- 詳細モード切り替え（`<input type="checkbox">`）
+- 折れ線グラフ表示（`<Line />`）
 
-# yarn
-yarn dev
+### `script setup`
 
-# bun
-bun run dev
-```
+- API 型定義（都道府県・人口構成データ）
+- `useFetch` による都道府県一覧取得
+- 都道府県選択に応じて人口データを `$fetch` で取得・キャッシュ
+- `watchEffect` によりリアクティブにグラフを更新
+- `getRandomColor()` 関数で線の色をランダムに生成
 
-## Production
+---
 
-Build the application for production:
+## 🚀 デプロイについて
 
-```bash
-# npm
-npm run build
+このアプリは [Vercel](https://vercel.com/) にデプロイされており、以下の特徴を持ちます：
 
-# pnpm
-pnpm build
+- GitHub に Push するだけで自動的に **ビルド & デプロイ**
+- ビルドコマンドと静的ディレクトリの設定のみで運用可能
+- ステージングと本番環境の切り替えも簡単
 
-# yarn
-yarn build
+---
 
-# bun
-bun run build
-```
+## 📌 API エンドポイン
 
-Locally preview production build:
+- `/api/prefectures`  
+  → 都道府県一覧を取得
 
-```bash
-# npm
-npm run preview
+- `/api/population?prefCode=XX`  
+  → 指定した都道府県の人口推移データを取得
 
-# pnpm
-pnpm preview
+---
 
-# yarn
-yarn preview
+## 🧪 テストについて
 
-# bun
-bun run preview
-```
+`/server/api/population.test.ts` ハンドラのテストには `Vitest` を使用して、API の挙動を確認しています。
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## 📜 ライセンス
+
+[MIT](LICENSE)
+
