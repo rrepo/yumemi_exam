@@ -1,5 +1,5 @@
 import { fetchFromApi } from '../utils/api'
-import { getQuery, createError, defineEventHandler } from "h3"; // ← これ重要！
+import { getQuery, createError, defineEventHandler } from "h3";
 
 export default defineEventHandler(async (event) => {
   try {

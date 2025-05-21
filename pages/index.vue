@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto p-4">
-        都道府県を選択するとグラフが表示されます。
+        都道府県を選択するとグラフが表示されます
         <br>
         <input type="checkbox" id="detailSwitch" v-model="detielSwich" class="mr-2">
         <label for="detailSwitch">詳細モード</label>
